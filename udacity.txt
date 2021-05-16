@@ -1,0 +1,178 @@
+Block elements are:
+
+paragraphs <p>
+lists:
+unordered (with bullet points) <ul>, or
+ordered - lists (with numbers) <ol>
+headings: from 1st level <h1> to 6th level headings - <h6>
+articles <article>
+sections <section>
+long quotes <blockquote>
+Inline elements are meant to differentiate part of a text, to give it a particular function or meaning. Inline elements usually comprise a single or few words.
+
+Inline elements are:
+
+links <a>
+emphasized words <em>
+important words <strong>
+
+Spans
+The HTML <span> element is like a generic wrapper that is used to group text, mostly for styling purposes. Consider the following code:
+<p>
+  This sentence needs some <span class=”red”>visual emphasis</span> to really bring home the point.
+</p>
+Blockquotes
+Blockquotes are used to identify a citation.
+
+<blockquote cite="https://www.wikiwand.com/en/Scooby-Doo_(character)">
+  <p>Ruh-roh--RAGGY!!!</p>
+  <footer>—Scooby Doo, <cite>Mystery Incorporated</cite></footer>
+</blockquote>
+
+Line breaks
+used to modify spacing in browser and to create a new/next Line
+<br>
+Images
+are self closing </img>. comes with the src (where the image came from), alt (for accessibility needs, include a description of the image), width and height of image. do all this before the closing i.e 
+<img
+    src=""
+    alt=""
+    width=""
+    heigth=""
+/>
+
+Links are inline elements written with anchor tags <a>. <a> comes with a href attribute says what the link is. also it comes with a rel(relative) or abs(absolute) attribute denoting if link should be opened within the website (rel) or navigated to another website (abs) e.g
+<a href="https://thelabradorclub.com" rel="noopener" target="_blank"
+  >Join The Labrador Retriever Club</a>
+here rel=noopener and target = _blank ensures that the website is opened in a seperate window
+
+CSS
+
+selector{     
+    property: value;
+} selectors could either be a .class or an #id. in the case of a pseudo class ( a keyword added to the selector that specifies a special stated of the selected element) e.g hover, use this way
+selector: pseudo-class {
+    property: value;
+}
+
+Attribute selectors are special kind of selectors that match elements based on thier attributes and attribute values. use a []
+[attr] This selector will select all elements with the attribute attr, whatever its value.
+[attr=val] This selector will select all elements with the attribute attr, but only if its value is val.
+[attr~=val] This selector will select all elements with the attribute attr, but only if val is one of a space-separated list of words contained in attr's value
+
+In line styling (style in html attribute)
+<p style="color: red; font-size: 20px;">I'm learning to code!</p>
+in line style trump styles in external style sheet and styles in style tags
+
+Style tags (placed in the head section with the style element)
+<head>
+  <style>
+    p {
+      color: red;
+      font-size: 20px;
+    }
+  </style>
+</head
+
+external style sheet (also placed within the head with the link element)
+
+you can use @import to break your styles (one for layout, one for images, one for blog cards, etc.) into a number of smaller, focused files. This makes it a lot easier to manage the styles they contain and your code is more scalable and modular!
+
+// at the top of your main CSS file
+
+@import “./layout”;
+@import “./images”;
+@import “./blog-cards”;
+
+
+Heriachy
+there is a hierarchy for the weight given to each type of selector. from most to least, its
+style attribute (in-line style) >> ID selectors >> class selectors, attribute selectors, pseudo-class (e.g. :hover) >> type selectors (e.g. h1) and pseudo-elements(e.g ::before). using the !important keyword can help ovveride the hierarchy
+
+THE BOX MODEL
+according to the box model concenpt, every element on the page is a rectangular box and may have width, height, padding, borders and margins.
+- first the content of the box, which has width and height
+- padding - which is the space between the box content and its borders
+- border - next to the padding. also has top, bottom, left and right variants for the border property. the border is the line between the box's padding and margin.
+- margin - this surrounds the whole box. it is between tbe box and the surrounding boxes
+
+DISPLAY AND POSITIONING
+Elements set to inline-block display only take up as much space they (or the text they contain) need to, as they have no height or width. this way they can exist side by side with other elements. Span elements are a common example of inline-blick display, although in css, other elements can be set to inlibe-block
+.box{
+  display: inline-block;
+}
+block display however, sets the element to take up the whole space, making other elements exist either above or below them
+
+DISPLAY AND POSITIONING: Z-INDEX
+when elements overlap, they are ordered on the z-axis. overlapping elements, with a larger z-index cover those with a smaller one. elements are not shown top to bottom rather they are stacked one on top of the other so the last element written (the last code you wrote), is seen first. if you would like to see the element behind the last one written, giving it a numeric value for the z-index and making sure it is higher than the z-index of the one in front would make the one behind appear first
+
+ABSOLUTE AND RELATIVE UNITS
+absolute measurements are set values regardless of anything having to do with your program or the browser. e.g. of absoulte values are pixels, inches, mm, and cm
+relative measurements however are dynamic and can be based on the width of the browser screen e.g. 5, em, vw (viewport width), vh(viewport height). for example, you can set an element's fontsize relative to another element font-size
+
+TYPOGRAPHY
+<del> <ins> deleted and strikethrough should be used in HTML instead of using a line throguh style in CSS
+Line height determines the amount of space between lines in the same paragraph
+
+FONTS
+fonts weight are expressed as numeric values between 100 and 900. Black is 900, bold is 700 regular is 400
+<em></em> tag for italics and <strong></strong> tag for bold.
+Google font link goes into the head tag and in the CSS portion, you could set the element property like this 
+.box{
+  font-family: 'Montserrat', sans-serif;
+}
+
+COLORS
+-hexadecimal color is specified with: #RRGGBB, where the RR (red), GG (green) and BB (blue) hexadecimal integers specify the components of the color. All values must be between 00 and FF. For example, the #0000ff value is rendered as blue, because the blue component is set to its highest value (ff) and the others are set to 00.
+An RGB color value is specified with the rgb() function, which has the following syntax: rgb(red, green, blue). Each parameter (red, green, and blue) defines the intensity of the color and can be an integer between 0 and 255 or a percentage value (from 0% to 100%). For example, the rgb(0,0,255) value is rendered as blue, because the blue parameter is set to its highest value (255) and the others are set to 0.
+
+FLEXBOX
+aligns and distributes elements within a parent element. By setting an element's display property to flex, all elements inside of it become flex items that can be laid out in a customized way following design patterns like columns, rows, alignment, and distribution. s a set of CSS rules for stretching multiple columns or rows across a parent container. Flex is unique amongst CSS properties because you have a main container and the items nested within it. CSS flex has properties that apply to both the element itself, and the items inside of it.flexbox relies on 2 axes, the main and the cross axis. the main axis is defined by flex-direction which has four values: row row-reverse, column and column-reverse.
+the order css propert is specifically for the flex
+#three {
+    order: 1;
+}
+
+to align items on the cross axis, use align-item with either of these values (stretch, flwx start, flex-end, center)
+to justify content on the main axis, use justify-content with either of these values (flex-start, flex-end, center, space-around, space-between, space-evenly)
+
+GRID
+Grid is two dimensional, while Flex is one
+Grid is layout first, while Flexbox is content first
+Flex is for components of an app, Grid is for the app layout itself.Grid excels at creating layouts for a webpage, while Flexbox is a master of content flow for each element that makes up the page layout.
+After setting the display property of your container div to grid, the next step is to set the rows and columns in your grid which can be done with the CSS properties: 
+grid-template-columns - defines the column layout of your grid, i.e how many sections the page should be divided into vertically. The values for this property are the explicit value for each column and the number of columns is defined implicitly by the number of values entered, 
+grid-template-rows - follows the same logic
+And to define gutters between rows and columns you can use the property grid-gap on the parent container that has the display property set to grid.
+The grid-area property specifies a particular area or set of rows and columns that a grid item occupies. It is applied to the grid item itself with CSS. Here is an example:
+
+.item{
+  grid-area: 1/2/3/3
+}
+Because grid-area is shorthand for the properties: grid-row-start, grid-column-start, grid-row-end and grid-column-end, the code above places the item from rows 1-3, and columns 2-3.
+
+grid -auto-row works similary with grid-template-column: repeat, they take in 2 values. grid-auto-rows takes in a min value and a max value
+
+The fr unit represents a fraction of the available space in the grid container.
+
+The repeat() notation can be used to quickly layout many tracks for large grids. For example:
+
+grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+Could be written with repeat notation like this:
+
+grid-template-columns: repeat(7, 1fr);
+The grid-auto-rows property can be used to generate the number of rows based on the content and available space. The following code:
+
+grid-auto-rows: minmax(100px, auto);
+Would create rows that are at least 100px tall and can be as tall as the content inside them demands.
+
+WEB LAYOUT
+you can use <a></a> to link to html pages together
+
+MEDIA QUERY
+Media queries are used to set different style rules for different devices or sized screens. We use breakpoints to set the condition of a media query. The logic is: @media(feature:value) e.g
+@media(min-width:900px) {
+  body{
+   background:red;
+ }
+} here, if the viewport width is greater than 900px the background of the webpage would turn red.
